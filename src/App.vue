@@ -17,6 +17,10 @@
     <button @click="doThat('Hello', $event)">Click</button>
     {{ c }}
     <calc />
+    <!-- {{ myCollection }} -->
+    <!-- <div v-for="(item, index) in myCollection" :key="index">
+      {{ index }} - {{ item }}
+    </div> -->
   </div>
 </template>
 
@@ -32,7 +36,8 @@ export default {
   },
   data: () => ({
     message: "Привет, Vue",
-    show: false,
+    myCollection: [1, 2, 3, 4, 5, 6, 7],
+    show: true,
     c: 0,
     a: 1,
     b: 1,
