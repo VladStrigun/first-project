@@ -54,6 +54,7 @@
         >
           {{ value }}
         </button>
+        <button @click="deleteLastChar()">del</button>
         <div class="radio">
           <input
             v-model="selectOp"
@@ -92,12 +93,23 @@ export default {
       myCollection: [1, 2, 3, 4, 5, 6, 7],
       logs: {},
       buttonVisibility: true,
-      keyBoards: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "del"],
+      keyBoards: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     };
   },
   methods: {
     setValue(value) {
-      this[this.selectOp] = value;
+      const currentOp = this.selectOp;
+      const prevValue = currentOp === "op1" ? this.op1 : this.op2;
+
+      this[currentOp] = prevValue + value;
+      console.log(this.selectOp);
+    },
+
+    deleteLastChar() {
+      const currentOp = this.selectOp;
+      const value = currentOp === "op1" ? this.op1 : this.op2;
+
+      this[currentOp] = value.slice(0, -1);
     },
 
     fib(n) {
